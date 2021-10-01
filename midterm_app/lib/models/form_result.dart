@@ -10,7 +10,6 @@ class formResult extends StatefulWidget {
 }
 
 class _formResultState extends State<formResult> {
-  String? _message = 'Here is where you can see your new content result';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -21,13 +20,10 @@ class _formResultState extends State<formResult> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Consumer<FormModel>(
-                builder: (context, model, child) {
-                  return Text('Form result - ${model.urname} ${model.mail} ${model.header} ${model.header}');
-                },
-              ),
+            Consumer<FormModel>(
+              builder: (context, model, child) {
+                return Text('Form result - ${model.urname} ${model.mail} ${model.header} ${model.header}');
+              },
             ),
             ElevatedButton(
               onPressed: () {

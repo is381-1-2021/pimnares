@@ -1,3 +1,4 @@
+import 'package:cat_what/gridhome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -11,17 +12,17 @@ class createContent extends StatelessWidget {
       appBar: AppBar(
         title: Text('Create your content'),
       ),
-      body: FoundFormPage(),
+      body: contentForm(),
     );
   }
 }
 
-class FoundFormPage extends StatefulWidget {
+class contentForm extends StatefulWidget {
   @override
-  _FoundFormPage createState() => _FoundFormPage();
+  _contentForm createState() => _contentForm();
 }
 
-class _FoundFormPage extends State<FoundFormPage> {
+class _contentForm extends State<contentForm> {
   final _formKey = GlobalKey<FormState>();
   String _urname = '';
   String _urmail = '';
@@ -30,7 +31,8 @@ class _FoundFormPage extends State<FoundFormPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return
+    Padding(
       padding: const EdgeInsets.all(8.0),
       child: Form(
         key: _formKey,
@@ -107,7 +109,8 @@ class _FoundFormPage extends State<FoundFormPage> {
                   context.read<FormModel>().header = _header;
                   context.read<FormModel>().detail = _detail;
 
-                  Navigator.pop(context);
+                Navigator.push(context,
+                MaterialPageRoute(builder: (context) => gridhome()));
                 }
               },
               child: Text('Submit'),
