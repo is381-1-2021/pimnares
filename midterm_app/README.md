@@ -1,4 +1,4 @@
-# midterm_app
+# cat_what
 
 A new Flutter project.
 

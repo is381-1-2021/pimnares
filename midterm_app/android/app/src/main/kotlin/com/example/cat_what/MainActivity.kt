@@ -1,4 +1,4 @@
-package com.example.midterm_app
+package com.example.cat_what
 
 import io.flutter.embedding.android.FlutterActivity
 

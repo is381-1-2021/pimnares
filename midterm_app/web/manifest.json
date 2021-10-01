@@ -1,6 +1,6 @@
 {
-    "name": "midterm_app",
-    "short_name": "midterm_app",
+    "name": "cat_what",
+    "short_name": "cat_what",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",
