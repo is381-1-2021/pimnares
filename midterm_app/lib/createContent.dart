@@ -104,13 +104,8 @@ class _contentForm extends State<contentForm> {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
 
-                  context.read<FormModel>().urname = _urname;
-                  context.read<FormModel>().mail = _urmail;
-                  context.read<FormModel>().header = _header;
-                  context.read<FormModel>().detail = _detail;
-
-                Navigator.push(context,
-                MaterialPageRoute(builder: (context) => gridhome()));
+                  var response = '$_urname $_urmail $_header $_detail';
+                  Navigator.pop(context, response);
                 }
               },
               child: Text('Submit'),
