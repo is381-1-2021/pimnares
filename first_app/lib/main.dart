@@ -1,4 +1,7 @@
 
+import 'dart:math';
+
+import 'package:first_app/pages/eighth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -45,6 +48,7 @@ class MyApp extends StatelessWidget {
         '/5': (context) => FiftPage(),
         '/6': (context) => SixthPage(),
         '/7': (context) => SeventhPage(),
+        '/8': (context) => EightPage(),
       },
     );
   }
