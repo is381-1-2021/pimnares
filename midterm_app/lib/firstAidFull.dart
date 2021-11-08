@@ -34,7 +34,9 @@ class _FirstAidFullState extends State<FirstAidFull> {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('First Aid'),
+        title: Text('First Aid', style: (TextStyle(color: Colors.white))),
+        backgroundColor: Colors.deepOrange.shade200,
+
       ),
       body: firstAidBody(),
       bottomNavigationBar: MyBottomNavBar(
@@ -151,9 +153,9 @@ class MyBottomNavBar extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.all(30.0),
         decoration: BoxDecoration(
-          color: Colors.orange,
+          color: Colors.deepOrange.shade200,
         ),
-        child: Icon(Icons.home)
+        child: Icon(Icons.home, color: Colors.white,)
       ),
     );
   }

@@ -1,16 +1,15 @@
-import 'package:cat_what/gridhome.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-
-import 'models/form_model.dart';
+import 'contentForm_model.dart';
 
 class createContent extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Create your content'),
+        title: Text('Create your content',
+            style: (TextStyle(color: Colors.white))),
       ),
       body: contentForm(),
     );
@@ -31,8 +30,7 @@ class _contentForm extends State<contentForm> {
 
   @override
   Widget build(BuildContext context) {
-    return
-    Padding(
+    return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Form(
         key: _formKey,
@@ -52,6 +50,7 @@ class _contentForm extends State<contentForm> {
               onSaved: (value) {
                 _urname = value!;
               },
+              initialValue: context.read<contentFormModel>().urName,
             ),
             TextFormField(
               decoration: InputDecoration(
@@ -67,6 +66,7 @@ class _contentForm extends State<contentForm> {
               onSaved: (value) {
                 _urmail = value!;
               },
+              initialValue: context.read<contentFormModel>().urMail,
             ),
             TextFormField(
               decoration: InputDecoration(
@@ -82,6 +82,7 @@ class _contentForm extends State<contentForm> {
               onSaved: (value) {
                 _header = value!;
               },
+              initialValue: context.read<contentFormModel>().header,
             ),
             TextFormField(
               decoration: InputDecoration(
@@ -97,16 +98,29 @@ class _contentForm extends State<contentForm> {
               onSaved: (value) {
                 _detail = value!;
               },
+              initialValue: context.read<contentFormModel>().detail,
             ),
             ElevatedButton(
-              style: ElevatedButton.styleFrom(primary: Colors.orangeAccent.shade200),
+              style:
+                  ElevatedButton.styleFrom(primary: Colors.deepOrange.shade200),
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
                   _formKey.currentState!.save();
 
-                  var response = '$_urname $_urmail $_header $_detail';
-                  Navigator.pop(context, response);
+                  context.read<contentFormModel>().urName = _urname;
+                  context.read<contentFormModel>().urMail = _urmail;
+                  context.read<contentFormModel>().header = _header;
+                  context.read<contentFormModel>().detail = _detail;
+                  Navigator.pop(context);
+
+                  final response = 'Successfully submit your content!\nWe wil email to you after finish all the process.';
+                final snackBar = SnackBar(content: Text(response,
+                  style: TextStyle(fontSize: 15),),
+                backgroundColor: Colors.deepOrange[300],);
+                ScaffoldMessenger.of(context).showSnackBar(snackBar);
                 }
+                
+                
               },
               child: Text('Submit'),
             ),

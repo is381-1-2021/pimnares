@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
 
-class FormModel extends ChangeNotifier {
-  String? _urname;
-  String? _urmail;
-  String? _header;
-  String? _detail;
+class contentFormModel extends ChangeNotifier {
+  String? _urname = '';
+  String? _urmail = '';
+  String? _header = '';
+  String? _detail = '';
 
-  get urname => this._urname;
+  get urName => this._urname;
 
-  set urname(value) {
+  set urName(value) {
     this._urname = value;
     notifyListeners();
   }
 
-  get mail => this._urmail;
+  get urMail => this._urmail;
 
-  set mail(value) {
+  set urMail(value) {
     this._urmail = value;
     notifyListeners();
   }

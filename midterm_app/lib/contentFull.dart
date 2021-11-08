@@ -1,3 +1,4 @@
+import 'package:cat_what/ContentFormResault.dart';
 import 'package:cat_what/createContent.dart';
 import 'package:flutter/material.dart';
 
@@ -23,30 +24,46 @@ class _contentFullState extends State<contentFull> {
     final List<int> colorCodes = <int>[100];
 
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Content'),
-      ),
-      body: contentBody(),
-      bottomNavigationBar: MyBottomNavBar(
-        index: index,
-        callback: (newIndex) => setState(
-          () => this.index = newIndex,
+        appBar: AppBar(
+          title: Text('Content',style: TextStyle(fontFamily: 'FCPalette', fontSize: 20),),
+          actions: [
+            IconButton(
+              icon: Icon(Icons.mail_outline),
+              tooltip: 'Button1',
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => FormResult(),
+                  ),
+                );
+              },
+            ),
+          ],
         ),
-      ),
-      floatingActionButton: FloatingActionButton.extended(
-      onPressed: (){
-        Navigator.push(
-          context, 
-          MaterialPageRoute(
-          builder: (context) => createContent(),
+        body: contentBody(),
+        bottomNavigationBar: MyBottomNavBar(
+          index: index,
+          callback: (newIndex) => setState(
+            () => this.index = newIndex,
           ),
-        );
-      }, 
-      backgroundColor: Colors.orangeAccent.shade200,
-      label: Text('',),
-      icon: Icon(Icons.add),
-    )
-    );
+        ),
+        floatingActionButton: FloatingActionButton.extended(
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => createContent(),
+              ),
+            );
+          },
+          backgroundColor: Colors.deepOrange.shade200,
+          icon: Icon(
+            Icons.add,
+            color: Colors.white,
+          ),
+          label: Text(''),
+        ));
   }
 }
 
@@ -63,7 +80,7 @@ Widget _contentBody(BuildContext context) {
       context: context,
       tiles: [
         ListTile(
-          title: Text('17 เรื่องลับๆของน้องแมว'),
+          title: Text('17 เรื่องลับๆของน้องแมว',style: TextStyle(fontFamily: 'FCPalette', fontSize: 20),),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
             Navigator.push(context,
@@ -71,7 +88,7 @@ Widget _contentBody(BuildContext context) {
           },
         ),
         ListTile(
-          title: Text('ทำไมเราถึงควรเลี้ยงน้องแมวแบบระบบปิด'),
+          title: Text('ทำไมเราถึงควรเลี้ยงน้องแมวแบบระบบปิด',style: TextStyle(fontFamily: 'FCPalette', fontSize: 20),),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
             Navigator.push(context,
@@ -79,7 +96,7 @@ Widget _contentBody(BuildContext context) {
           },
         ),
         ListTile(
-          title: Text('4 พฤติกรรมที่บอกว่าน้องแมวสุขภาพดี'),
+          title: Text('4 พฤติกรรมที่บอกว่าน้องแมวสุขภาพดี',style: TextStyle(fontFamily: 'FCPalette', fontSize: 20),),
           trailing: Icon(Icons.keyboard_arrow_right),
           onTap: () {
             Navigator.push(context,
@@ -106,9 +123,12 @@ class MyBottomNavBar extends StatelessWidget {
       child: Container(
           padding: const EdgeInsets.all(30.0),
           decoration: BoxDecoration(
-            color: Colors.orange,
+            color: Colors.deepOrange.shade200,
           ),
-          child: Icon(Icons.home)),
+          child: Icon(
+            Icons.home,
+            color: Colors.white,
+          )),
     );
   }
 }
