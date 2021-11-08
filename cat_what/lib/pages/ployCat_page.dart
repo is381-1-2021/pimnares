@@ -1,0 +1,115 @@
+import 'package:cat_what/controllers/ploy_controller.dart';
+import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
+import 'package:cat_what/models/ploy_model.dart';
+import 'package:flutter/material.dart';
+
+class CatPage extends StatefulWidget {
+  final CatController controller;
+
+  CatPage({required this.controller});
+
+  @override
+  _CatPageState createState() => _CatPageState();
+}
+
+class _CatPageState extends State<CatPage> {
+  List<Cat> cats = List.empty();
+  bool isLoading = false;
+
+  void initState() {
+    super.initState();
+    widget.controller.onSync.listen(
+      (bool synState) => setState(() => isLoading = synState),
+    );
+  }
+
+  void _getCats() async {
+    var newCats = await widget.controller.fetchCats();
+
+    setState(() => cats = newCats);
+  }
+
+  Widget get body => isLoading
+      ? CircularProgressIndicator()
+      : ListView.builder(
+          itemCount: cats.isEmpty ? 1 : cats.length,
+          itemBuilder: (ctx, index) {
+            if (cats.isEmpty) {
+              return Text('Tap button to fetch lost cat page',);
+            }
+
+            return Center(
+                //value: cats[index].found,
+                //title: Text(cats[index].name),
+                //subtitle: Text(cats[index].breed),
+                //child: Image.network('https://firebasestorage.googleapis.com/v0/b/is381-2021-catwhat.appspot.com/o/cat1.jpg?alt=media&token=da1fa660-05e7-4921-81c1-e57f48238602'),
+                //leading: CircleAvatar ,
+                // onChanged: null
+                child: SizedBox(
+                  width: 400,
+                  height: 200,
+                  child: Card(
+                    elevation: 5,
+                    child: Column
+                    (crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Name :' + ' '+cats[index].name,
+                      style: TextStyle(fontSize: 15),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Breed :' + ' ' + cats[index].breed,
+                      style: TextStyle(fontSize: 15),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Color :' + ' ' + cats[index].color,
+                      style: TextStyle(fontSize: 15),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Gender :' + ' ' + cats[index].gender,
+                      style: TextStyle(fontSize: 15),),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text('Lost location :' + ' ' + cats[index].lostLocation,
+                      style: TextStyle(fontSize: 15),),
+                    )
+                    //Image.network('gs://is381-2021-catwhat.appspot.com/cat1.jpg')
+                  ],),
+              ),
+                )
+            );
+          },
+        );
+  //   return ListView.builder(itemBuilder: (context, index) {
+  //     return ListTile(
+  //       title: Text(cats[index].name),
+  //     );
+  //   });
+  // });
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Colors.deepOrange[200],
+        title: Text('Lost Cat'),
+        
+      ),
+      body: Center(
+        
+        child: body,
+      ),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: Colors.deepOrange[200],
+        onPressed: _getCats,
+        child: Icon(Icons.add),
+      ),
+    );
+  }
+}
