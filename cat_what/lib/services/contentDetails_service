@@ -1,0 +1,23 @@
+import 'dart:convert';
+
+import 'package:cat_what/models/contentDetails_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+abstract class DetailServices {
+  Future<List<ContentDetail>> getContentDetails();
+}
+
+class FirebaseServices extends Services {
+  @override
+  Future<List<ContentDetail>> getContentDetails() async {
+    QuerySnapshot snapshot =
+        await FirebaseFirestore
+        .instance
+        .collection('cw_content')
+        .get();
+
+    var all = AllContentDetails.fromSnapshot(snapshot);
+
+    return all.ContentDetails;
+  }
+}

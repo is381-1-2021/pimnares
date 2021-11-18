@@ -1,8 +1,8 @@
 
-import 'package:cat_what/Second_page.dart';
-import 'package:cat_what/contentFull.dart';
-import 'package:cat_what/firstAidFull.dart';
-import 'package:cat_what/home_screen.dart';
+import 'package:cat_what/OLD/Second_page.dart';
+import 'package:cat_what/OLD/contentFull.dart';
+import 'package:cat_what/OLD/firstAidFull.dart';
+import 'package:cat_what/OLD/home_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'findMyCat.dart';
@@ -43,22 +43,22 @@ Widget _gridhomebody(BuildContext context) {
     mainAxisSpacing: 10,
     crossAxisCount: 2,
     children: <Widget>[
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => FindMyCat()));
-        },
-        child: Column(
-          children: [
-            Icon(Icons.search,size: 100, color: Colors.white,),
-            Container(
-            padding: const EdgeInsets.all(8),
-            child: Center(child: const Text("Find My Cat", style: TextStyle(fontSize: 20, color: Colors.white),)),
-            color: Colors.deepOrange.shade200,
-      ),
-          ],
-        ),
-      ),
+      // GestureDetector(
+      //   onTap: () {
+      //     Navigator.push(
+      //         context, MaterialPageRoute(builder: (context) => FindMyCat()));
+      //   },
+      //   child: Column(
+      //     children: [
+      //       Icon(Icons.search,size: 100, color: Colors.white,),
+      //       Container(
+      //       padding: const EdgeInsets.all(8),
+      //       child: Center(child: const Text("Find My Cat", style: TextStyle(fontSize: 20, color: Colors.white),)),
+      //       color: Colors.deepOrange.shade200,
+      // ),
+      //     ],
+      //   ),
+      // ),
 
       GestureDetector(
         onTap: () {
@@ -111,22 +111,22 @@ Widget _gridhomebody(BuildContext context) {
         ),
       ),
       
-      GestureDetector(
-        onTap: () {
-          Navigator.push(
-              context, MaterialPageRoute(builder: (context) => MossHelp()));
-        },
-        child: Column(
-          children: [
-            Icon(Icons.healing,size: 100, color: Colors.white,),
-            Container(
-            padding: const EdgeInsets.all(8),
-            child: Center(child: const Text("SOS", style: TextStyle(fontSize: 20, color: Colors.white),)),
-            color: Colors.deepOrange.shade200,
-      ),
-          ],
-        ),
-      ),
+      // GestureDetector(
+      //   onTap: () {
+      //     Navigator.push(
+      //         context, MaterialPageRoute(builder: (context) => MossHelp()));
+      //   },
+      //   child: Column(
+      //     children: [
+      //       Icon(Icons.healing,size: 100, color: Colors.white,),
+      //       Container(
+      //       padding: const EdgeInsets.all(8),
+      //       child: Center(child: const Text("SOS", style: TextStyle(fontSize: 20, color: Colors.white),)),
+      //       color: Colors.deepOrange.shade200,
+      // ),
+      //     ],
+      //   ),
+      // ),
       
     ],
   );

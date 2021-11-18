@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-import 'firstAidlist/bitten.dart';
-import 'firstAidlist/bloodStoping.dart';
-import 'firstAidlist/brokenBone.dart';
-import 'firstAidlist/bugbite.dart';
-import 'firstAidlist/chocking.dart';
-import 'firstAidlist/poisoning.dart';
-import 'firstAidlist/seizures.dart';
-import 'firstAidlist/shock.dart';
-import 'firstAidlist/water.dart';
+import '../firstAidlist/bitten.dart';
+import '../firstAidlist/bloodStoping.dart';
+import '../firstAidlist/brokenBone.dart';
+import '../firstAidlist/bugbite.dart';
+import '../firstAidlist/chocking.dart';
+import '../firstAidlist/poisoning.dart';
+import '../firstAidlist/seizures.dart';
+import '../firstAidlist/shock.dart';
+import '../firstAidlist/water.dart';
 
 class FirstAidFull extends StatefulWidget {
   @override

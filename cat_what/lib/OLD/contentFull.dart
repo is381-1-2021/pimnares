@@ -1,10 +1,10 @@
-import 'package:cat_what/ContentFormResault.dart';
-import 'package:cat_what/createContent.dart';
+import 'package:cat_what/OLD/ContentFormResault.dart';
+import 'package:cat_what/OLD/createContent.dart';
 import 'package:flutter/material.dart';
 
-import 'contentlist/17things.dart';
-import 'contentlist/close.dart';
-import 'contentlist/healty.dart';
+import '../contentlist/17things.dart';
+import '../contentlist/close.dart';
+import '../contentlist/healty.dart';
 
 class contentFull extends StatefulWidget {
   @override
@@ -25,6 +25,7 @@ class _contentFullState extends State<contentFull> {
 
     return Scaffold(
         appBar: AppBar(
+          backgroundColor: Colors.deepOrange[200],
           title: Text('Content'),
           actions: [
             IconButton(
@@ -42,12 +43,12 @@ class _contentFullState extends State<contentFull> {
           ],
         ),
         body: contentBody(),
-        bottomNavigationBar: MyBottomNavBar(
-          index: index,
-          callback: (newIndex) => setState(
-            () => this.index = newIndex,
-          ),
-        ),
+        // bottomNavigationBar: MyBottomNavBar(
+        //   index: index,
+        //   callback: (newIndex) => setState(
+        //     () => this.index = newIndex,
+        //   ),
+        // ),
         floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             Navigator.push(

@@ -1,19 +1,19 @@
-import 'package:cat_what/model/contentForm_model.dart';
+import 'package:cat_what/old_model/groomingForm_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class FormResult extends StatefulWidget {
+class GroomingFormResult extends StatefulWidget {
   @override
-  _FormResultState createState() => _FormResultState();
+  _GroomingFormResultState createState() => _GroomingFormResultState();
 }
 
-class _FormResultState extends State<FormResult> {
+class _GroomingFormResultState extends State<GroomingFormResult> {
   String? _message = 'Here is where the form result are';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Content Result'),
+        title: Text('Booking Result'),
       ),
       body: Center(
         child: Column(
@@ -21,10 +21,10 @@ class _FormResultState extends State<FormResult> {
           children: [
             Padding(
               padding: const EdgeInsets.all(8),
-              child: Consumer<contentFormModel>(
+              child: Consumer<groomingFormModel>(
                 builder: (context, model, child) {
                   return Text(
-                      ' Your name : ${model.urName} \n Your email : ${model.urMail} \n Your content: ${model.header}\n ${model.detail}');
+                      ' Owner : ${model.firstName} ${model.lastName} \n Cat name : ${model.catName} ${model.catBreed} \n Cat weight: ${model.catWeight} kg');
                 },
               ),
             )

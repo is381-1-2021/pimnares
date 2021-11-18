@@ -1,12 +1,10 @@
 import 'package:cat_what/controllers/ploy_controller.dart';
+import 'package:cat_what/services/ploy_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cat_what/models/ploy_model.dart';
 import 'package:flutter/material.dart';
 
 class CatPage extends StatefulWidget {
-  final CatController controller;
-
-  CatPage({required this.controller});
 
   @override
   _CatPageState createState() => _CatPageState();
@@ -15,16 +13,20 @@ class CatPage extends StatefulWidget {
 class _CatPageState extends State<CatPage> {
   List<Cat> cats = List.empty();
   bool isLoading = false;
+  var services = FirebaseServices();
+  var controller;
 
   void initState() {
     super.initState();
-    widget.controller.onSync.listen(
+    controller = CatController(services);
+
+    controller.onSync.listen(
       (bool synState) => setState(() => isLoading = synState),
     );
   }
 
   void _getCats() async {
-    var newCats = await widget.controller.fetchCats();
+    var newCats = await controller.fetchCats();
 
     setState(() => cats = newCats);
   }
@@ -35,7 +37,9 @@ class _CatPageState extends State<CatPage> {
           itemCount: cats.isEmpty ? 1 : cats.length,
           itemBuilder: (ctx, index) {
             if (cats.isEmpty) {
-              return Text('Tap button to fetch lost cat page',);
+              return Text(
+                'Tap button to fetch lost cat page',
+              );
             }
 
             return Center(
@@ -46,44 +50,54 @@ class _CatPageState extends State<CatPage> {
                 //leading: CircleAvatar ,
                 // onChanged: null
                 child: SizedBox(
-                  width: 400,
-                  height: 200,
-                  child: Card(
-                    elevation: 5,
-                    child: Column
-                    (crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
+              width: 400,
+              height: 200,
+              child: Card(
+                elevation: 5,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Name :' + ' '+cats[index].name,
-                      style: TextStyle(fontSize: 15),),
+                      child: Text(
+                        'Name :' + ' ' + cats[index].name,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Breed :' + ' ' + cats[index].breed,
-                      style: TextStyle(fontSize: 15),),
+                      child: Text(
+                        'Breed :' + ' ' + cats[index].breed,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Color :' + ' ' + cats[index].color,
-                      style: TextStyle(fontSize: 15),),
+                      child: Text(
+                        'Color :' + ' ' + cats[index].color,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Gender :' + ' ' + cats[index].gender,
-                      style: TextStyle(fontSize: 15),),
+                      child: Text(
+                        'Gender :' + ' ' + cats[index].gender,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     ),
                     Padding(
                       padding: const EdgeInsets.all(8.0),
-                      child: Text('Lost location :' + ' ' + cats[index].lostLocation,
-                      style: TextStyle(fontSize: 15),),
+                      child: Text(
+                        'Lost location :' + ' ' + cats[index].lostLocation,
+                        style: TextStyle(fontSize: 15),
+                      ),
                     )
                     //Image.network('gs://is381-2021-catwhat.appspot.com/cat1.jpg')
-                  ],),
+                  ],
+                ),
               ),
-                )
-            );
+            ));
           },
         );
   //   return ListView.builder(itemBuilder: (context, index) {
@@ -99,10 +113,8 @@ class _CatPageState extends State<CatPage> {
       appBar: AppBar(
         backgroundColor: Colors.deepOrange[200],
         title: Text('Lost Cat'),
-        
       ),
       body: Center(
-        
         child: body,
       ),
       floatingActionButton: FloatingActionButton(

@@ -1,41 +1,40 @@
 
-import 'package:cat_what/contentFull.dart';
-import 'package:cat_what/createContent.dart';
-import 'package:cat_what/findMyCat.dart';
-import 'package:cat_what/gridhome.dart';
-import 'package:cat_what/mainhome.dart';
-import 'package:cat_what/model/contentForm_model.dart';
-import 'package:cat_what/model/formmodel.dart';
-import 'package:cat_what/model/formmodel3.dart';
-import 'package:cat_what/model/groomingForm_model.dart';
+import 'package:cat_what/OLD/home_screen.dart';
+import 'package:cat_what/bar.dart';
+import 'package:cat_what/OLD/contentFull.dart';
+import 'package:cat_what/OLD/createContent.dart';
+import 'package:cat_what/OLD/findMyCat.dart';
+import 'package:cat_what/OLD/gridhome.dart';
+import 'package:cat_what/OLD/mainhome.dart';
+import 'package:cat_what/pages/content_page.dart';
+import 'package:cat_what/pages/home.dart';
 import 'package:cat_what/pages/ployCat_page.dart';
 import 'package:cat_what/services/ploy_service.dart';
+import 'package:cat_what/start.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import 'controllers/ploy_controller.dart';
+import 'old_model/contentForm_model.dart';
+import 'old_model/formmodel.dart';
+import 'old_model/formmodel3.dart';
+import 'old_model/groomingForm_model.dart';
 
 void main()  async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  var services = FirebaseServices();
-  var controller = CatController(services);
   
-  runApp(CatApp(controller: controller));
+  runApp(CatApp());
 }
 
 class CatApp extends StatelessWidget {
-  final CatController controller;
-  const CatApp({required this.controller});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: CatPage(
-        controller: controller
-        ),
+      home: HomeScreen1(),
     );
   }
 }
@@ -77,7 +76,7 @@ class MyApp extends StatelessWidget {
       initialRoute: '/1',
       routes: <String, WidgetBuilder>{
         '/1': (context) => maingridhome(),
-        '/2': (context) => gridhome(),
+//        '/2': (context) => gridhome(),
         '/3': (context) => createContent(),
         '/4': (context) => MyApp(),
         // '/cat': (context) => FindMyCat(),
