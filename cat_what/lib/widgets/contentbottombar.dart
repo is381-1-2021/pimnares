@@ -1,3 +1,4 @@
+import 'package:cat_what/Archive/sawanya/screens/groom_main.dart';
 import 'package:cat_what/OLD/form.dart';
 import 'package:cat_what/pages/setting.dart';
 import 'package:cat_what/pages/content_page.dart';
@@ -55,7 +56,10 @@ class ContentBottomBar extends StatelessWidget {
                   Icons.shopping_cart_rounded,
                   color: Colors.deepOrange[200],
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => GroomMain(),));
+                },
               ),
             ),
           ),

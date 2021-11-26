@@ -42,7 +42,7 @@ class CatApp extends StatelessWidget {
     //     context.read<FormModel>().isLogin = false;
     //   } else {
     //     print('User is signed in');
-    //     context.read<FomModel>().isLogin= true;
+    //     context.read<FormModel>().isLogin= true;
     //   }
     // });
     return MaterialApp(
