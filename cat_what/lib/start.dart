@@ -65,8 +65,6 @@
 //   }
 // }
 
-import 'package:cat_what/controllers/ploy_controller.dart';
-import 'package:cat_what/services/ploy_service.dart';
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'package:cat_what/models/ploy_model.dart';
 import 'package:flutter/material.dart';
@@ -79,12 +77,12 @@ class CatPage extends StatefulWidget {
 class _CatPageState extends State<CatPage> {
   List<Cat> cats = List.empty();
   bool isLoading = false;
-  var services = FirebaseServices();
+  //var services = FirebaseServices();
   var controller;
 
   void initState() {
     super.initState();
-    controller = CatController(services);
+    //controller = CatController(services);
 
     controller.onSync.listen(
       (bool synState) => setState(() => isLoading = synState),

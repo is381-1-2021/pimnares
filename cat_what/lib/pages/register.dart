@@ -1,3 +1,4 @@
+import 'package:cat_what/pages/welcomepage.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
@@ -36,7 +37,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           if(snapshot.connectionState == ConnectionState.done){
             return Scaffold(
       appBar: AppBar(
-        title: Text("สร้างบัญชีผู้ใช้"),
+        backgroundColor: Colors.deepOrange[200],
+        title: Text("Sign Up"),
       ),
       body: Container(
         child: Padding(
@@ -47,7 +49,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("E-mail", style: TextStyle(fontSize: 20)),
+                  Text("Email", style: TextStyle(fontSize: 20)),
                   TextFormField(
                     validator: MultiValidator([
                       RequiredValidator(errorText: "please enter your email"),
@@ -72,7 +74,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      child: Text("Regist", style: TextStyle(fontSize: 20)),
+                      style: ElevatedButton.styleFrom(primary: Colors.deepOrange[200]),
+                      child: Text("Sign Up", style: TextStyle(fontSize: 20)),
                       onPressed: () async{
                         if(formKey.currentState!.validate()){
                         formKey.currentState!.save();
@@ -86,7 +89,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                               msg: "completed",
                               gravity: ToastGravity.TOP);
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                              return HomeScreen1();
+                              return WelcomePage();
                               }));
                             });                            
                         }on FirebaseAuthException catch(e){

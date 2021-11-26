@@ -1,11 +1,11 @@
-import 'package:cat_what/pages/ployCat_page.dart';
+import 'package:cat_what/pages/content_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:form_field_validator/form_field_validator.dart';
 import 'package:cat_what/models/profile.dart';
-import 'package:cat_what/pages/Welcome.dart';
+import 'package:cat_what/pages/setting.dart';
 import 'package:cat_what/pages/home.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -39,6 +39,7 @@ class _LoginScreenState extends State<LoginScreen> {
           if(snapshot.connectionState == ConnectionState.done){
             return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.deepOrange[200],
         title: Text("login"),
       ),
       body: Container(
@@ -50,10 +51,10 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("E-mail", style: TextStyle(fontSize: 20)),
+                  Text("Email", style: TextStyle(fontSize: 20)),
                   TextFormField(
                     validator: MultiValidator([
-                      RequiredValidator(errorText: "please enter your email"),
+                      RequiredValidator(errorText: "Please enter your email"),
                       EmailValidator(errorText: "Required @"),
                     ]),
                     keyboardType: TextInputType.emailAddress,
@@ -66,7 +67,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   ),
                   Text("Password", style: TextStyle(fontSize: 20)),
                   TextFormField(
-                    validator:RequiredValidator(errorText: "please enter your pwd"),
+                    validator:RequiredValidator(errorText: "Please enter your password"),
                     obscureText: true,
                     onSaved: (String? password){
                       profile.password=password!;
@@ -75,7 +76,8 @@ class _LoginScreenState extends State<LoginScreen> {
                   SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                      child: Text("Log in", style: TextStyle(fontSize: 20)),
+                      style: ElevatedButton.styleFrom(primary: Colors.deepOrange[200]),
+                      child: Text("Login", style: TextStyle(fontSize: 20),),
                       onPressed: () async{
                         if(formKey.currentState!.validate()){
                         formKey.currentState!.save();
@@ -86,7 +88,7 @@ class _LoginScreenState extends State<LoginScreen> {
                             ).then((value){
                               formKey.currentState!.reset();
                               Navigator.pushReplacement(context, MaterialPageRoute(builder: (context){
-                              return CatPage();
+                              return ContentPage(); //มาเปล่ยนตรงนี้
                               }));
                             });                         
                         }on FirebaseAuthException catch(e){

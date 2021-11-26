@@ -6,16 +6,19 @@ import 'package:cat_what/OLD/createContent.dart';
 import 'package:cat_what/OLD/findMyCat.dart';
 import 'package:cat_what/OLD/gridhome.dart';
 import 'package:cat_what/OLD/mainhome.dart';
+import 'package:cat_what/pages/setting.dart';
+import 'package:cat_what/pages/content_detail.dart';
 import 'package:cat_what/pages/content_page.dart';
 import 'package:cat_what/pages/home.dart';
+import 'package:cat_what/pages/login.dart';
 import 'package:cat_what/pages/ployCat_page.dart';
-import 'package:cat_what/services/ploy_service.dart';
+import 'package:cat_what/pages/waitpage.dart';
 import 'package:cat_what/start.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'controllers/ploy_controller.dart';
 import 'old_model/contentForm_model.dart';
 import 'old_model/formmodel.dart';
 import 'old_model/formmodel3.dart';
@@ -33,8 +36,21 @@ class CatApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // FirebaseAuth.instance.authStateChanges().listen((User? user) {
+    //   if (user == null) {
+    //     print('User is currently signed out');
+    //     context.read<FormModel>().isLogin = false;
+    //   } else {
+    //     print('User is signed in');
+    //     context.read<FomModel>().isLogin= true;
+    //   }
+    // });
     return MaterialApp(
-      home: HomeScreen1(),
+      home: WaitPage()//ContentPage(),
+      // initialRoute: '/',
+      // routes: <String, WidgetBuilder>{
+      //   '/details': (BuildContext context) => ContentDetailsPage()
+      // },
     );
   }
 }

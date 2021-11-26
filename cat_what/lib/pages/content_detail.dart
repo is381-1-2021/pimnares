@@ -1,7 +1,7 @@
-
 import 'package:cat_what/controllers/content_controller.dart';
 import 'package:cat_what/models/content_model.dart';
 import 'package:cat_what/services/content_service.dart';
+import 'package:cat_what/widgets/contentbottombar.dart';
 import 'package:flutter/material.dart';
 
 class ContentDetailsPage extends StatefulWidget {
@@ -24,7 +24,7 @@ class _ContentDetailsPageState extends State<ContentDetailsPage> {
     );
   }
 
-  void _getContentDetails() async {
+  void _getContents() async {
     var newContents = await controller.fetchContents();
     print(newContents);
 
@@ -41,21 +41,25 @@ class _ContentDetailsPageState extends State<ContentDetailsPage> {
                 "",
               );
             }
-            return Center(
-              child: SizedBox(
-                width: 400,
-                height: 80,
-                child: Card(
-                  elevation: 5,
-                  child: Column(
+            return Column(
+              children: [
+                SizedBox(
+                  width: 400,
+                  height: 200,
+                  child: Card(
+                    elevation: 10,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(20)
+                ),
+                    child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
                         Padding(
-                          padding: const EdgeInsets.only(left: 30),
+                          padding: const EdgeInsets.all(20),
                           child: Text(
                             contents[index].header,
-                            style: TextStyle(fontSize: 15),
+                            style: TextStyle(fontSize: 20),
                           ),
                         ),
                         Padding(
@@ -65,13 +69,13 @@ class _ContentDetailsPageState extends State<ContentDetailsPage> {
                             style: TextStyle(fontSize: 15),
                           ),
                         ),
-                      
-                    ],
+                      ],
+                    ),
                   ),
-                  ),
-                  ),
-                  );
-                  });
+                ),
+              ],
+            );
+          });
 
   @override
   Widget build(BuildContext context) {
@@ -81,7 +85,7 @@ class _ContentDetailsPageState extends State<ContentDetailsPage> {
         title: Padding(
           padding: const EdgeInsets.only(top: 0),
           child: const Text(
-            'Hello,',
+            'Content',
             style: TextStyle(
                 color: Colors.white,
                 fontSize: 40,
@@ -100,9 +104,10 @@ class _ContentDetailsPageState extends State<ContentDetailsPage> {
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.deepOrange[200],
-        onPressed: _getContentDetails,
-        child: Icon(Icons.home_filled),
+        onPressed: _getContents,
+        child: Icon(Icons.refresh_rounded),
       ),
+      bottomNavigationBar: ContentBottomBar(),
     );
   }
 }

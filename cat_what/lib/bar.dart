@@ -1,4 +1,5 @@
 import 'package:cat_what/OLD/contentFull.dart';
+import 'package:cat_what/pages/content_page.dart';
 import 'package:flutter/material.dart';
 import 'package:cat_what/start.dart';
 
@@ -17,7 +18,7 @@ class _Bar extends State<Bar> {
   int _selectedItemIndex = 2;
   final List pages = [
     null,
-    contentFull(),
+    ContentPage(),
     CatPage(),
     null,
     null,
