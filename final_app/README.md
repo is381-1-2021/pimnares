@@ -2,6 +2,10 @@
 
 A new Flutter project.
 
+# Firebase Link
+
+https://console.firebase.google.com/u/0/project/finalapp-e37b5/overview
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
